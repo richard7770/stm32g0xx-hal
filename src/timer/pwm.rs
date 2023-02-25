@@ -108,6 +108,7 @@ macro_rules! pwm {
                     let psc = (ratio - 1) / 0xffff;
                     let arr = ratio / (psc + 1) - 1;
 
+                    #[allow(unused_unsafe)]
                     unsafe {
                         self.tim.psc.write(|w| w.psc().bits(psc as u16));
                         self.tim.arr.write(|w| w.$arr().bits(arr as u16));

@@ -166,6 +166,7 @@ pub trait Channel: private::Channel {
     fn set_transfer_length(&mut self, len: u16) {
         assert!(!self.is_enabled());
 
+        #[allow(unused_unsafe)]
         self.ch().ndtr.write(|w| unsafe { w.ndt().bits(len) });
     }
 
@@ -180,6 +181,7 @@ pub trait Channel: private::Channel {
     /// Set the priority level of this channel
     fn set_priority_level(&mut self, priority: Priority) {
         let pl = priority.into();
+        #[allow(unused_unsafe)]
         self.ch().cr.modify(|_, w| unsafe { w.pl().bits(pl) });
     }
 

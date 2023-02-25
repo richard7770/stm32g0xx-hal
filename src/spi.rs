@@ -169,7 +169,7 @@ macro_rules! spi {
                 // Enable pins
                 pins.setup();
 
-                spi.cr1.write(|w| unsafe {
+                spi.cr1.write(|w|
                     w.cpha()
                         .bit(mode.phase == Phase::CaptureOnSecondTransition)
                         .cpol()
@@ -190,7 +190,7 @@ macro_rules! spi {
                         .clear_bit()
                         .bidimode()
                         .clear_bit()
-                });
+                );
 
                 Spi { spi, pins }
             }
