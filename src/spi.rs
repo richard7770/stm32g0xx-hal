@@ -178,6 +178,8 @@ macro_rules! spi {
                         .set_bit()
                         .br()
                         .bits(br)
+                        .spe()
+                        .set_bit()
                         .lsbfirst()
                         .clear_bit()
                         .ssm()
@@ -186,14 +188,8 @@ macro_rules! spi {
                         .set_bit()
                         .rxonly()
                         .clear_bit()
-                        .dff()
-                        .clear_bit()
                         .bidimode()
                         .clear_bit()
-                        .ssi()
-                        .set_bit()
-                        .spe()
-                        .set_bit()
                 });
 
                 Spi { spi, pins }
